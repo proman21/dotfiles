@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh -- -y
