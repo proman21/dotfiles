@@ -1,0 +1,4 @@
+Host dietpi
+  HostName 10.0.0.101
+  User dietpi
+
