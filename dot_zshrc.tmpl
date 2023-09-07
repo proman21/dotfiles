@@ -104,10 +104,6 @@ export PATH=$PATH:$HOME/.local/bin
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# WSL2 xServer Configuration
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-export LIBGL_ALWAYS_INDIRECT=1
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -126,6 +122,16 @@ export SDKMAN_DIR="/home/synthsym/.sdkman"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+{{ if eq .chezmoi.os "linux" }}
+# Linux-specific config
+
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# WSL-specific config
+
+# WSL2 xServer Configuration
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # Use relay program to access GPG in WSL
 wsl2_gpg_agent_bin="/mnt/c/Users/snoop/wsl2-gpg-agent.exe"
@@ -153,3 +159,5 @@ else
   echo >&2 "WARNING: $wsl2_gpg_agent_bin is not executable."
 fi
 unset wsl2_gpg_agent_bin
+{{   end }}
+{{ end }}
