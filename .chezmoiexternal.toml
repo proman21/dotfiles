@@ -8,9 +8,3 @@
     type = "archive"
     url = "https://github.com/dracula/zsh/archive/master.tar.gz"
     stripComponents = 1
-
-[".nvm"]
-    type = "archive"
-    url = "https://github.com/nvm-sh/nvm/archive/refs/tags/v0.39.2.tar.gz"
-    exact = true
-    stripComponents = 1
