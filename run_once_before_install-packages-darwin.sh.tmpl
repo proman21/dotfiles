@@ -1,0 +1,17 @@
+{{- if eq .osid "darwin" -}}
+#!/bin/bash
+
+brew bundle --file=/dev/stdin <<EOF
+brew "gh"
+brew "git"
+brew "gnupg"
+brew "pinentry-mac"
+brew "rustup"
+brew "ykman"
+brew "yubikey-personalization"
+
+cask "arc
+cask "dracula-terminal"
+cask "visual-studio-code"
+EOF
+{{ end -}}
